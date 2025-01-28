@@ -5,7 +5,7 @@ from mininet.link import TCLink
 from mininet.cli import CLI
 from mininet.log import setLogLevel
 
-class CustomTopo(Topo):
+class MyTopo(Topo):
   def build(self):
     s1 = self.addSwitch('s1')
     s2 = self.addSwitch('s2')
@@ -31,18 +31,4 @@ class CustomTopo(Topo):
     self.addLink(s2, s4, bw=10, delay='14ms')
     self.addLink(s3, s4, bw=10, delay='14ms')
 
-def run():
-  setLogLevel('info')
-
-  topo = CustomTopo()
-  net = Mininet(topo=topo, link=TCLink, controller=lambda name: RemoteController(name, ip='172.0.0.1'))
-  net.start()
-  
-  net.pingAll()
-
-  CLI(net)
-  
-  net.stop()
-
-if __name__ == '__main__':
-  run()
+topos = { 'mytopo' : (lambda: MyTopo() ) }
