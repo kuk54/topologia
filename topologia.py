@@ -17,7 +17,7 @@ class MyTopo(Topo):
     h3 = self.addHost('h3', ip='10.0.0.3/24')
     h4 = self.addHost('h4', ip='10.0.0.4/24')
     h5 = self.addHost('h5', ip='10.0.0.5/24')
-    h6 = self.addHsot('h6', ip='10.0.0.6/24')
+    h6 = self.addHost('h6', ip='10.0.0.6/24')
 
     self.addLink(h1, s1, bw=1, delay='14ms')
     self.addLink(h2, s1, bw=1, delay='14ms')
